@@ -2,29 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomizeTrainCar : MonoBehaviour {
-	private string spriteName = "snk-sprt-traincar";
-	private int spriteVersion = 0;
+public class RandomGround : MonoBehaviour {
+	public string spriteName = "snk-sprt-ground";
 	private SpriteRenderer spriteR;
 	private Sprite[] sprites;
-	private BoxCollider2D collider;
 
 	void Start()
 	{
 		spriteR = gameObject.GetComponent<SpriteRenderer>();
-		collider = gameObject.GetComponent<BoxCollider2D>();
 		sprites = Resources.LoadAll<Sprite>(spriteName);
 
-		if (Random.Range (0f, 1f) < 0.4) {
-			// boxcar
+		float r = Random.Range (0f, 1f);
+		if (r < 0.7f) {
 			spriteR.sprite = sprites [0];
-			collider.enabled = false;
-		} else {
-			// tanker
+		} else if (r < 0.85f) {
 			spriteR.sprite = sprites [1];
-			collider.enabled = true;
+		} else {
+			spriteR.sprite = sprites [2];
 		}
 
+
 		spriteR.flipX = Random.Range (0f, 1f) > 0.5;
+		spriteR.flipY = Random.Range (0f, 1f) > 0.5;
 	}
 }

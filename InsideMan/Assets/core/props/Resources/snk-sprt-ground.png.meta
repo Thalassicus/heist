@@ -1,13 +1,15 @@
 fileFormatVersion: 2
-guid: 9baee27cc3ed4724d96a1df1c96042e5
-timeCreated: 1517078285
+guid: 4a071293ed24cb04980b3827068905f3
+timeCreated: 1517088909
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: snk-sprt-wall01_0
-    21300002: snk-sprt-wall01_1
-    21300004: snk-sprt-wall01_2
-    21300006: snk-sprt-wall01_3
+    21300000: snk-sprt-ground01_0
+    21300002: snk-sprt-ground01_1
+    21300004: snk-sprt-ground01_2
+    21300006: snk-sprt-ground_1
+    21300008: snk-sprt-ground_0
+    21300010: snk-sprt-ground_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -84,57 +86,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: snk-sprt-wall01_0
+      name: snk-sprt-ground_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 7
-        width: 6
-        height: 4
+        y: 9
+        width: 8
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: snk-sprt-wall01_1
+      name: snk-sprt-ground_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: snk-sprt-ground_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 6
-        height: 6
+        width: 8
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: snk-sprt-wall01_2
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 0
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: snk-sprt-wall01_3
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 0
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
