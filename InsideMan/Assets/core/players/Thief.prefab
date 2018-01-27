@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 50021417961089774}
   m_Layer: 8
   m_Name: Thief
-  m_TagString: Untagged
+  m_TagString: Thief
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   sprintSpeed: 20
+  carryMultiplier: 0.8
 --- !u!124 &124803240723026568
 Behaviour:
   m_ObjectHideFlags: 1
