@@ -37,7 +37,6 @@ public class PlayerController_Thief : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){
-		Debug.Log("Triggered!");
 		if( collider.tag == "Objective" ){
 			hasObjective = true;
 			collider.gameObject.transform.SetParent(transform);

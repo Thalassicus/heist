@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameInstance : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public GameObject ThiefCam;
+	public GameObject HackerCam;
+	public GameObject thief;
+	public GameObject hacker;
 }
