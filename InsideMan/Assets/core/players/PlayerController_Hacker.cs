@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController_Hacker : MonoBehaviour {
 	GameInstance gameInstance;
 	GameObject controlledObject;
-	Quaternion originalAngle = new Quaternion();
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -14,27 +15,24 @@ public class PlayerController_Hacker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if( controlledObject != null ){
-			if (Input.GetMouseButton(0)) {
-				var cameraPos = gameInstance.HackerCam.GetComponent<Camera> ().WorldToScreenPoint (controlledObject.transform.position);
-				var ang = Mathf.Atan2 (Input.mousePosition.y-cameraPos.y,Input.mousePosition.x-cameraPos.x);
-				ang = (180 / Mathf.PI) * ang;
-				Debug.Log ("Moved!");
-				controlledObject.transform.rotation = Quaternion.Slerp(controlledObject.transform.rotation, Quaternion.Euler(0,0,ang), Time.deltaTime * 2f);
-			}
-			if (Input.GetMouseButtonDown (1)) {
-				transform.rotation = originalAngle;
-				controlledObject = null;
-			}
+		if (gameInstance.isGameOver)
+			return;
+		
+		if( Input.GetMouseButtonDown(1) ){
+			ReleaseControlOfObject ();
 		}
 	}
 
 	public void TakeControlOfObject(GameObject obj){
+		ReleaseControlOfObject ();
+		controlledObject = obj;
+		controlledObject.GetComponent<NPC_Camera> ().SetIsControlled (true);
+	}
+
+	public void ReleaseControlOfObject(){
 		if(controlledObject != null){
-			controlledObject.transform.rotation = originalAngle;
+			controlledObject.GetComponent<NPC_Camera> ().SetIsControlled (false);
 			controlledObject = null;
 		}
-		controlledObject = obj;
-		originalAngle = controlledObject.transform.rotation;
 	}
 }

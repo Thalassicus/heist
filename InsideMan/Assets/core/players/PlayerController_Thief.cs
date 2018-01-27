@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController_Thief : MonoBehaviour {
+	GameInstance gameInstance;
+
 	public float moveSpeed = 1f;
 	public float sprintSpeed = 2f;
 	public float carryMultiplier = 0.8f;
@@ -12,15 +14,21 @@ public class PlayerController_Thief : MonoBehaviour {
 
 	bool hasObjective = false;
 
+	int earnings = 0;
+
 	//Rigidbody2D rigidbody2D = new Rigidbody2D();
 
 	void Start(){
+		gameInstance = FindObjectOfType<GameInstance> ();
 		//rigidbody2D = ((Rigidbody2D)GetComponent(typeof(Rigidbody2D)));
 		moveSpeedActual = moveSpeed/1000;
 		sprintSpeedActual = sprintSpeed/1000;
 	}
 
 	void Update () {
+		if (gameInstance.isGameOver)
+			return;
+		
 		var moveVector = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
 		var speed = moveSpeedActual;
 		moveVector.Normalize();
@@ -46,6 +54,7 @@ public class PlayerController_Thief : MonoBehaviour {
 		if(collider.tag == "Exit" && hasObjective){
 			// End Game
 			Debug.Log("WOOOOOO!!!!");
+			gameInstance.ShowGameOver (true);
 		}
 	}
 }

@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/core/maps/dev_playground.unity
+    guid: 72cec6bef5767ad409d534a3c4ad9dba
