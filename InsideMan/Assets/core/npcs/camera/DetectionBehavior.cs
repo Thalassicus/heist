@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class NPC_Camera : MonoBehaviour {
+public class DetectionBehavior: MonoBehaviour {
 
 	GameInstance gameInstance;
 	bool isControlled = false;
@@ -137,6 +137,10 @@ public class NPC_Camera : MonoBehaviour {
 			alertIcon.SetActive(true);
 			//gameInstance.ShowGameOver (false);
 		}
+		if (collider.gameObject.tag == "Train")
+		{
+			collider.gameObject.GetComponent<TrainCar>().SetRoofVisibility(false);
+		}
 	}
 
 	public void DoTriggerStay2D(Collider2D collider){
@@ -148,6 +152,10 @@ public class NPC_Camera : MonoBehaviour {
 			isLosing = false;
 			alertIcon.SetActive(false);
 			alertIcon.GetComponent<SpriteRenderer>().color = Color.yellow;
+		}
+		if (collider.gameObject.tag == "Train")
+		{
+			collider.gameObject.GetComponent<TrainCar>().SetRoofVisibility(false);
 		}
 	}
 }

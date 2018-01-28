@@ -24,12 +24,12 @@ public class PlayerController_Hacker : MonoBehaviour {
 	public void TakeControlOfObject(GameObject obj){
 		ReleaseControlOfObject ();
 		controlledObject = obj;
-		controlledObject.GetComponent<NPC_Camera> ().SetIsControlled (true);
+		controlledObject.GetComponent<DetectionBehavior> ().SetIsControlled (true);
 	}
 
 	public void ReleaseControlOfObject(){
 		if(controlledObject != null){
-			controlledObject.GetComponent<NPC_Camera> ().SetIsControlled (false);
+			controlledObject.GetComponent<DetectionBehavior> ().SetIsControlled (false);
 			controlledObject = null;
 		}
 	}

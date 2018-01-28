@@ -24,11 +24,11 @@ public class Loot : MonoBehaviour{
 		Random.InitState(gameObject.GetInstanceID());
 		if (Random.Range(0f, 1f) < gameInstance.lootChance)
 		{
-			gameObject.SetActive(true);
+			//gameObject.SetActive(true);
 		}
 		else
 		{
-			gameObject.SetActive(false);
+			//gameObject.SetActive(false);
 		}
 		SetLootValue(Random.Range(0f, 1f) < gameInstance.highValueLootChance);
 	}
@@ -51,9 +51,11 @@ public class Loot : MonoBehaviour{
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log("Cha-ching!");
+		if (!gameInstance) { return; }
 		if (markedForDeletion) return;
-		if (other.gameObject.tag == "Thief"){
+		if (other.gameObject.tag == "Thief")
+		{
+			Debug.Log("Cha-ching!");
 			gameInstance.AddThiefEarnings(isMarked,value);
 			markedForDeletion = true;
 			Destroy(gameObject);

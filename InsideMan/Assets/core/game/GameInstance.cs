@@ -29,7 +29,7 @@ public class GameInstance : MonoBehaviour {
 	public float highValueLootChance = 0.25f;
 
 	private void Start(){
-		var cameras = FindObjectsOfType<NPC_Camera>();
+		var cameras = FindObjectsOfType<DetectionBehavior>();
 		for (int i = 0; i < cameras.Length; i++) {
 			if (cameras[i].isActiveAndEnabled){
 				cameras[i].SetCameraNumber(i + 1);

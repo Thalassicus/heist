@@ -7,16 +7,16 @@ public class TriggerZone : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D collision)
 	{
-		passToObject.GetComponent<NPC_Camera>().DoTriggerEnter2D(collision);
+		passToObject.GetComponent<DetectionBehavior>().DoTriggerEnter2D(collision);
 	}
 
 	public void OnTriggerExit2D(Collider2D collision)
 	{
-		passToObject.GetComponent<NPC_Camera>().DoTriggerExit2D(collision);
+		passToObject.GetComponent<DetectionBehavior>().DoTriggerExit2D(collision);
 	}
 
 	public void OnTriggerStay2D(Collider2D collision)
 	{
-		passToObject.GetComponent<NPC_Camera>().DoTriggerStay2D(collision);
+		passToObject.GetComponent<DetectionBehavior>().DoTriggerStay2D(collision);
 	}
 }

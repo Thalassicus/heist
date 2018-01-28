@@ -8,6 +8,7 @@ TagManager:
   - Exit
   - Thief
   - Camera
+  - Train
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - Cameras
   - Sightlines
   - LootValue
-  - 
-  - 
+  - TrainCar
+  - TrainCarRoof
   - 
   - 
   - 
