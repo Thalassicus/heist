@@ -12,6 +12,9 @@ public class GameInstance : MonoBehaviour {
 	public GameObject hackerGameOver;
 
 	public int successEarnings = 50000;
+	public int sharedEarnings = 0;
+	public int thiefEarnings = 0;
+	public int hackerEarnings = 0;
 
 	public bool isGameOver	= false;
 	public bool hasLost		= false;
@@ -31,6 +34,24 @@ public class GameInstance : MonoBehaviour {
 		}
 	}
 
+	public void AddThiefEarnings(bool wasMarked, int value)
+	{
+		if (wasMarked)
+		{
+			hackerEarnings = hackerEarnings - value;
+			sharedEarnings = sharedEarnings + (int)(value / 2f);
+		}
+		else
+		{
+			thiefEarnings = thiefEarnings + value;
+		}
+	}
+
+	public void AddHackerEarnings(int value)
+	{
+		hackerEarnings = hackerEarnings + value;
+	}
+
 	private void Update()
 	{
 		if (isGameOver && hasLost)
@@ -46,19 +67,20 @@ public class GameInstance : MonoBehaviour {
 		isGameOver = true;
 		thiefGameOver.SetActive(true);
 		hackerGameOver.SetActive(true);
-		int sharedEarnings = 0;
-		int thiefEarnings = 0;
-		int hackerEarnings = 0;
-		if (wasVictory){
-			sharedEarnings = successEarnings;
-		}else{
+		int totalSharedEarnings	= sharedEarnings + successEarnings;
+		int totalThiefEarnings = thiefEarnings;
+		int totalHackerEarnings = hackerEarnings;
+		if (wasVictory)
+		{
+			hackerGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
+			thiefGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
+		}
+		else{
 			lostReloadLevelTimer = Time.time + lostReloadLevelTimerDuration;
 			hasLost = true;
-			HackerCam.transform.position = ThiefCam.transform.position;
-			HackerCam.GetComponent<Camera>().orthographicSize	= ThiefCam.GetComponent<Camera>().orthographicSize;
 		}
-		hackerGameOver.GetComponent<GameOver>().UpdateText(wasVictory, sharedEarnings, thiefEarnings, hackerEarnings);
-		thiefGameOver.GetComponent<GameOver>().UpdateText(wasVictory, sharedEarnings, thiefEarnings, hackerEarnings);
+		HackerCam.transform.position = ThiefCam.transform.position;
+		HackerCam.GetComponent<Camera>().orthographicSize = ThiefCam.GetComponent<Camera>().orthographicSize;
 	}
 
 	public void RestartGame(){

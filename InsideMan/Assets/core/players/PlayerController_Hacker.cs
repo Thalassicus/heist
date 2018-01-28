@@ -6,8 +6,6 @@ public class PlayerController_Hacker : MonoBehaviour {
 	GameInstance gameInstance;
 	GameObject controlledObject;
 
-
-
 	// Use this for initialization
 	void Start () {
 		gameInstance = FindObjectOfType<GameInstance> ();
