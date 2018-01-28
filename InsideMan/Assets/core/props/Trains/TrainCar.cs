@@ -18,9 +18,9 @@ public class TrainCar : MonoBehaviour{
 
     public bool isRandom = true;
     public bool isBoxcar = false;
+    public bool hasEntered = true;
 
-    void Start()
-	{
+    void Start() {
 		gameInstance = FindObjectOfType<GameInstance>();
 
 		spriteR = traincarCover.gameObject.GetComponent<SpriteRenderer>();
@@ -30,7 +30,7 @@ public class TrainCar : MonoBehaviour{
 		sprites = Resources.LoadAll<Sprite>(spriteName);
 
         if (isRandom) {
-            isBoxcar = Random.Range(0f, 1f) < 0.4;
+            isBoxcar = Random.Range(0f, 1f) < 0.5;
         }
 
         if (isBoxcar) {
@@ -55,18 +55,24 @@ public class TrainCar : MonoBehaviour{
         spriteR.flipX = Random.Range (0f, 1f) > 0.5;
 	}
 
-	void CreateLoot(Vector3 location)
+    void OnTriggerEnter(Collider other) {
+        if (!hasEntered) {
+            hasEntered = true;
+            Debug.Log("Entered boxcar");
+        }
+    }
+
+    void CreateLoot(Vector3 location)
 	{
+        if (!isRandom) return;
 		Debug.Log("Creating loot!");
 		var pref = Instantiate(lootPrefab, transform.position, Quaternion.identity);
 		pref.transform.SetParent(transform);
 		pref.transform.localPosition = location;
 	}
 
-	public void SetRoofVisibility(bool isRoofVisible)
-	{
-		if (isBoxcar)
-		{
+	public void SetRoofVisibility(bool isRoofVisible) {
+		if (isBoxcar) {
 			traincarCover.SetActive(isRoofVisible);
 		}
 	}

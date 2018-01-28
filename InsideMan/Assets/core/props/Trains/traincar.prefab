@@ -138,6 +138,7 @@ MonoBehaviour:
   - {x: 0.05, y: 0.018, z: 0}
   isRandom: 1
   isBoxcar: 0
+  hasEntered: 1
 --- !u!212 &212048825788702502
 SpriteRenderer:
   m_ObjectHideFlags: 1
