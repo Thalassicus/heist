@@ -25,8 +25,16 @@ public class NPC_Drone : MonoBehaviour{
 	void Update (){
 		if (gameInstance.isGameOver)
 			return;
-		if (Input.GetMouseButton(0) && isControlled){
-			SetTargetPosition(getPosition(Input.mousePosition));
+		if (Input.GetMouseButton(0)){
+			if (isControlled) {
+				SetTargetPosition (getPosition (Input.mousePosition));
+			}
+		}
+		if( Input.GetMouseButtonDown(0)){
+			var dronePosition = gameInstance.HackerCam.GetComponent<Camera> ().WorldToScreenPoint (transform.position);
+			if((dronePosition - Input.mousePosition).magnitude < 2f){
+				gameInstance.hacker.GetComponent<PlayerController_Hacker>().TakeControlOfObject(gameObject);
+			}
 		}
 		if (isMoving)
 		{

@@ -248,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRandom: 0
   alertIcon: {fileID: 1771846533151028}
+  canMarkLoot: 0
   cameraNumberText: {fileID: 1031877242814906}
   rangeRenderer: {fileID: 120774547663465144}
 --- !u!114 &114526877017514460
