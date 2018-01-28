@@ -44,7 +44,7 @@ public class TrainCar : MonoBehaviour{
 					CreateLoot(possibleLootLocations[i]);
 				}
 			}
-			gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			gameObject.GetComponent<SpriteRenderer> ().enabled = true;
 
 		} else {
             isBoxcar = false;
