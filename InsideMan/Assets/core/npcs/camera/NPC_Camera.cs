@@ -7,6 +7,7 @@ public class NPC_Camera : MonoBehaviour {
 
 	GameInstance gameInstance;
 	bool isControlled = false;
+    public bool isRandom = true;
 
 	Quaternion targetRotation;
 	Quaternion originalRotation;
@@ -33,7 +34,9 @@ public class NPC_Camera : MonoBehaviour {
 		originalRotation = transform.rotation;
 		cameraNumberText.GetComponent<MeshRenderer>().sortingLayerID = SortingLayer.NameToID("UI");
 		Random.InitState(gameObject.GetInstanceID());
-		gameObject.SetActive(Random.value < gameInstance.cameraChance);
+        if (isRandom) {
+            gameObject.SetActive(Random.value < gameInstance.cameraChance);
+        }
 		isLeft = Random.value < 0.5f;
 		cameraCanSweepTime = Time.time + (cameraSweepTime * Random.value);
 		SetRotationFromSweep();
