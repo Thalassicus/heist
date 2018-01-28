@@ -44,12 +44,14 @@ public class TrainCar : MonoBehaviour{
 					CreateLoot(possibleLootLocations[i]);
 				}
 			}
+			gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 
 		} else {
             isBoxcar = false;
             spriteR.sprite = sprites[1];
             thisCollider.isTrigger = false;
 			spriteR.gameObject.layer = LayerMask.NameToLayer("TrainCar");
+			gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 		}
 
         spriteR.flipX = Random.Range (0f, 1f) > 0.5;
