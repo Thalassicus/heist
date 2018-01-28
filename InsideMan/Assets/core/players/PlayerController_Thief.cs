@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController_Thief : MonoBehaviour {
@@ -16,31 +17,40 @@ public class PlayerController_Thief : MonoBehaviour {
 
 	int earnings = 0;
 
-	//Rigidbody2D rigidbody2D = new Rigidbody2D();
+	Rigidbody2D rigidbody2D = new Rigidbody2D();
+
+	//public Text debugText;
 
 	void Start(){
 		gameInstance = FindObjectOfType<GameInstance> ();
-		//rigidbody2D = ((Rigidbody2D)GetComponent(typeof(Rigidbody2D)));
-		moveSpeedActual = moveSpeed/1000;
-		sprintSpeedActual = sprintSpeed/1000;
+		rigidbody2D = ((Rigidbody2D)GetComponent(typeof(Rigidbody2D)));
+		moveSpeedActual = moveSpeed;
+		sprintSpeedActual = sprintSpeed;
 	}
 
 	void Update () {
+		rigidbody2D.velocity = Vector2.zero;
 		if (gameInstance.isGameOver)
 			return;
 		
-		var moveVector = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
 		var speed = moveSpeedActual;
-		moveVector.Normalize();
-		isSprinting = Input.GetAxis ("Horizontal") != 0;
+		isSprinting = Input.GetAxis ("Sprint") != 0;
 		if(isSprinting){
 			speed = sprintSpeedActual;
 		}
 		if(hasObjective){
 			speed = speed * carryMultiplier;
 		}
-		moveVector = moveVector * speed;
-		transform.Translate (moveVector);
+		var moveVector = (Vector2.up * Input.GetAxis("Vertical")) + (Vector2.right * Input.GetAxis("Horizontal"));
+		moveVector.Normalize();
+		moveVector.Scale(new Vector2(speed * Time.deltaTime, speed * Time.deltaTime));
+		//debugText.text = "H: " + Input.GetAxis("Horizontal") + "\n" + "V: " + Input.GetAxis("Vertical") + "\nSpeed: "+speed+"\n" + "Vector: (" + moveVector.x + ", " + moveVector.y + ")";
+
+		//var moveVector = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0.8f), Mathf.Lerp(0, Input.GetAxis("Vertical") * speed * Time.deltaTime, 0.8f));
+		//moveVector.Normalize();
+		//moveVector = moveVector * speed;
+		//transform.Translate (moveVector);
+		rigidbody2D.velocity = moveVector;
 		//rigidbody2D.MovePosition(rigidbody2D.position + moveVector);
 	}
 

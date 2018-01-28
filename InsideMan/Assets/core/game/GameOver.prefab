@@ -164,7 +164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1890115920241482
 GameObject:
   m_ObjectHideFlags: 1
@@ -206,7 +206,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885583045982484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4244084, y: 1.7922256, z: -0.056152344}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224014490017040128}
@@ -575,6 +575,10 @@ MonoBehaviour:
   sharedText: {fileID: 114568962161907452}
   thiefText: {fileID: 114210054815226982}
   hackerText: {fileID: 114344837459466344}
+  panel: {fileID: 1187767458468934}
+  button: {fileID: 1411902850081850}
+  sharedLabel: {fileID: 1210760674187374}
+  personalLabel: {fileID: 1797188286157892}
 --- !u!114 &114912468213120602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -679,8 +683,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 1000
+  m_SortingLayerID: -1658302891
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &224006229387920860
 RectTransform:

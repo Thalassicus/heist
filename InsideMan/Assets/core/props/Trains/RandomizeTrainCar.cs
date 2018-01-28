@@ -18,11 +18,13 @@ public class RandomizeTrainCar : MonoBehaviour {
 		if (Random.Range (0f, 1f) < 0.4) {
 			// boxcar
 			spriteR.sprite = sprites [0];
-			collider.enabled = false;
+			//collider.enabled = false;
+			collider.isTrigger = true;
 		} else {
 			// tanker
 			spriteR.sprite = sprites [1];
-			collider.enabled = true;
+			//collider.enabled = true;
+			collider.isTrigger = false;
 		}
 
 		spriteR.flipX = Random.Range (0f, 1f) > 0.5;
