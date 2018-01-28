@@ -70,15 +70,16 @@ public class GameInstance : MonoBehaviour {
 		isGameOver = true;
 		thiefGameOver.SetActive(true);
 		hackerGameOver.SetActive(true);
-		int totalSharedEarnings	= sharedEarnings + successEarnings;
-		int totalThiefEarnings = thiefEarnings;
-		int totalHackerEarnings = hackerEarnings;
-		if (wasVictory)
-		{
+		int totalSharedEarnings	= 0;
+		int totalThiefEarnings = 0;
+		int totalHackerEarnings = 0;
+		if (wasVictory){
+			totalSharedEarnings	= sharedEarnings + successEarnings;
+			totalThiefEarnings = thiefEarnings;
+			totalHackerEarnings = hackerEarnings;
 			hackerGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
 			thiefGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
-		}
-		else{
+		}else{
 			lostReloadLevelTimer = Time.time + lostReloadLevelTimerDuration;
 			hasLost = true;
 		}

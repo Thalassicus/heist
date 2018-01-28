@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 58598092902502304}
   m_Layer: 11
   m_Name: NPCcam
-  m_TagString: Camera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRandom: 1
   alertIcon: {fileID: 1993757263852948}
+  canMarkLoot: 0
   cameraNumberText: {fileID: 1178318600640186}
   rangeRenderer: {fileID: 120121673985565440}
 --- !u!114 &114373595339488390

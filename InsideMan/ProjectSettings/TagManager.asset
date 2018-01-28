@@ -10,6 +10,7 @@ TagManager:
   - Camera
   - Train
   - Drone
+  - Camera_Controlled
   layers:
   - Default
   - TransparentFX

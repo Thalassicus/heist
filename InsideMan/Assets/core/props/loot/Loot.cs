@@ -60,7 +60,7 @@ public class Loot : MonoBehaviour{
 			markedForDeletion = true;
 			Destroy(gameObject);
 		}
-		if (other.gameObject.tag == "Camera")
+		if (other.gameObject.tag == "Camera_Controlled")
 		{
 			gameInstance.AddHackerEarnings(value);
 			isMarked = true;

@@ -13,6 +13,8 @@ public class DetectionBehavior: MonoBehaviour {
 	float loseTimerEnd = 0f;
 	float loseTimerDuration = 0.7f;
 	bool isLosing = false;
+
+	public bool canMarkLoot = false;
 	
 	public GameObject cameraNumberText;
 	public LineRenderer rangeRenderer;
@@ -51,8 +53,26 @@ public class DetectionBehavior: MonoBehaviour {
 		}
 	}
 
+	public void SetCanMarkLoot(bool newCanMarkLoot){
+		canMarkLoot = newCanMarkLoot;
+	}
+
 	public void SetCameraNumber(int number){
 		cameraNumberText.GetComponent<TextMesh>().text = "" + number;
+	}
+
+	void OnTriggerEnter2D(Collider2D collider){
+		if (gameObject.tag == "Camera_Controlled" && collider.gameObject.tag == "Train")
+		{
+			collider.gameObject.GetComponent<TrainCar>().SetRoofVisibility(false);
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D collider){
+		if (gameObject.tag == "Camera_Controlled" && collider.gameObject.tag == "Train")
+		{
+			collider.gameObject.GetComponent<TrainCar>().SetRoofVisibility(false);
+		}
 	}
 
 	public void DoTriggerEnter2D(Collider2D collider){
@@ -61,11 +81,6 @@ public class DetectionBehavior: MonoBehaviour {
 			loseTimerEnd = Time.time + gameInstance.detectionTime;
 			isLosing = true;
 			alertIcon.SetActive(true);
-			//gameInstance.ShowGameOver (false);
-		}
-		if (collider.gameObject.tag == "Train")
-		{
-			collider.gameObject.GetComponent<TrainCar>().SetRoofVisibility(false);
 		}
 	}
 
@@ -78,10 +93,6 @@ public class DetectionBehavior: MonoBehaviour {
 			isLosing = false;
 			alertIcon.SetActive(false);
 			alertIcon.GetComponent<SpriteRenderer>().color = Color.yellow;
-		}
-		if (collider.gameObject.tag == "Train")
-		{
-			collider.gameObject.GetComponent<TrainCar>().SetRoofVisibility(false);
 		}
 	}
 }

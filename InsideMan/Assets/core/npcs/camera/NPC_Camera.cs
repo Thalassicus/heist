@@ -89,11 +89,13 @@ public class NPC_Camera : MonoBehaviour {
 		SetRotationFromSweep();
 		if (isControlled)
 		{
+			GetComponentInChildren<TriggerZone>().gameObject.tag = "Camera_Controlled";
 			detectionBehavior.rangeRenderer.startColor = Color.blue;
 			detectionBehavior.rangeRenderer.endColor = Color.blue;
 		}
 		else
 		{
+			GetComponentInChildren<TriggerZone>().gameObject.tag = "Camera";
 			detectionBehavior.rangeRenderer.startColor = Color.red;
 			detectionBehavior.rangeRenderer.endColor = Color.red;
 		}
