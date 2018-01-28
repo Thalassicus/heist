@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/core/maps/dev_playground.unity
-    guid: 72cec6bef5767ad409d534a3c4ad9dba
+    path: Assets/core/maps/ThalTest.unity
+    guid: 5639671baeccc75408e87dcb2634b523

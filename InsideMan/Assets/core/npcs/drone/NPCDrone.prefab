@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 114891598199376038}
   m_Layer: 11
   m_Name: ViewZone
-  m_TagString: Camera
+  m_TagString: Drone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

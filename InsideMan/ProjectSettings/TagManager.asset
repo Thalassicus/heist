@@ -9,6 +9,7 @@ TagManager:
   - Thief
   - Camera
   - Train
+  - Drone
   layers:
   - Default
   - TransparentFX
