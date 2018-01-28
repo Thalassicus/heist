@@ -10,7 +10,7 @@ public class GameInstance : MonoBehaviour {
 	public GameObject hacker;
 	public GameObject thiefGameOver;
 	public GameObject hackerGameOver;
-
+	
 	public int successEarnings = 50000;
 	public int sharedEarnings = 0;
 	public int thiefEarnings = 0;
@@ -24,6 +24,9 @@ public class GameInstance : MonoBehaviour {
 
 	public float detectionTime = 0.6f;
 	public float cameraChance = 0.25f;
+
+	public float lootChance = 0.75f;
+	public float highValueLootChance = 0.25f;
 
 	private void Start(){
 		var cameras = FindObjectsOfType<NPC_Camera>();

@@ -7,6 +7,7 @@ TagManager:
   - Objective
   - Exit
   - Thief
+  - Camera
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemies
   - Cameras
   - Sightlines
-  - 
+  - LootValue
   - 
   - 
   - 

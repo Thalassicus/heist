@@ -10,22 +10,48 @@ public class Loot : MonoBehaviour{
 	int baseValue = 5000;
 	float highValueMultiplier = 3f;
 	public bool isHighValue = false;
+	Vector3 originalScale;
 
 	bool markedForDeletion = false;
 
+	public GameObject outlineObject;
+	public GameObject coinObject;
 	public GameObject markerObject;
 
 	void Start(){
 		gameInstance = FindObjectOfType<GameInstance>();
-		value = baseValue;
+		originalScale = transform.localScale;
+		Random.InitState(gameObject.GetInstanceID());
+		if (Random.Range(0f, 1f) < gameInstance.lootChance)
+		{
+			gameObject.SetActive(true);
+		}
+		else
+		{
+			gameObject.SetActive(false);
+		}
+		SetLootValue(Random.Range(0f, 1f) < gameInstance.highValueLootChance);
+	}
+
+	public void SetLootValue(bool isThisHighValue)
+	{
+		isHighValue = isThisHighValue;
 		if (isHighValue)
 		{
-			value = (int)(value * highValueMultiplier);
+			value = (int)(baseValue * highValueMultiplier);
+			outlineObject.SetActive(true);
+			//transform.localScale = originalScale * 1.25f;
+		}
+		else{
+			value = baseValue;
+			outlineObject.SetActive(false);
+			//transform.localScale = originalScale * 0.75f;
 		}
 	}
 
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
+		Debug.Log("Cha-ching!");
 		if (markedForDeletion) return;
 		if (other.gameObject.tag == "Thief"){
 			gameInstance.AddThiefEarnings(isMarked,value);

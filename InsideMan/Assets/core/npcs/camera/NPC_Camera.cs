@@ -35,10 +35,10 @@ public class NPC_Camera : MonoBehaviour {
 		cameraNumberText.GetComponent<MeshRenderer>().sortingLayerID = SortingLayer.NameToID("UI");
 		Random.InitState(gameObject.GetInstanceID());
         if (isRandom) {
-            gameObject.SetActive(Random.value < gameInstance.cameraChance);
+            gameObject.SetActive(Random.Range(0f, 1f) < gameInstance.cameraChance);
         }
-		isLeft = Random.value < 0.5f;
-		cameraCanSweepTime = Time.time + (cameraSweepTime * Random.value);
+		isLeft = Random.Range(0f, 1f) < 0.5f;
+		cameraCanSweepTime = Time.time + (cameraSweepTime * Random.Range(0f, 1f));
 		SetRotationFromSweep();
 		alertIconLocalScale = alertIcon.transform.localScale;
 	}
