@@ -15,8 +15,6 @@ public class PlayerController_Thief : MonoBehaviour {
 
 	bool hasObjective = false;
 
-	int earnings = 0;
-
 	Rigidbody2D rigidbody2D = new Rigidbody2D();
 
 	//public Text debugText;
@@ -52,6 +50,14 @@ public class PlayerController_Thief : MonoBehaviour {
 		//transform.Translate (moveVector);
 		rigidbody2D.velocity = moveVector;
 		//rigidbody2D.MovePosition(rigidbody2D.position + moveVector);
+	}
+
+	public void LootIt(bool wasShared, int value)
+	{
+		if (true)
+		{
+
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){
