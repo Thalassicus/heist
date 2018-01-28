@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4306826868376078}
   - component: {fileID: 114015244669741118}
+  - component: {fileID: 114526877017514460}
   - component: {fileID: 212908141699809896}
   - component: {fileID: 58637329394401144}
   m_Layer: 11
@@ -100,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1040161492438572}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.43, y: 1.9, z: -0.063964844}
+  m_LocalPosition: {x: -27.24, y: 16, z: -0.063964844}
   m_LocalScale: {x: 8, y: 8, z: 10}
   m_Children:
   - {fileID: 4858030789445156}
@@ -246,10 +247,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRandom: 0
-  cameraSweepAngle: 45
-  cameraSweepTime: 10
   alertIcon: {fileID: 1771846533151028}
   cameraNumberText: {fileID: 1031877242814906}
+  rangeRenderer: {fileID: 120774547663465144}
+--- !u!114 &114526877017514460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1040161492438572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23bc00c029f1754292460c7faa285f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionBehavior: {fileID: 114015244669741118}
+  isControlled: 0
+  range: {x: 25, y: 30}
 --- !u!114 &114891598199376038
 MonoBehaviour:
   m_ObjectHideFlags: 1

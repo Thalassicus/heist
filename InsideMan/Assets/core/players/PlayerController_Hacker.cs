@@ -24,12 +24,26 @@ public class PlayerController_Hacker : MonoBehaviour {
 	public void TakeControlOfObject(GameObject obj){
 		ReleaseControlOfObject ();
 		controlledObject = obj;
-		controlledObject.GetComponent<DetectionBehavior> ().SetIsControlled (true);
+		if (controlledObject.GetComponent<NPC_Camera>())
+		{
+			controlledObject.GetComponent<NPC_Camera>().SetIsControlled(true);
+		}else if (controlledObject.GetComponent<NPC_Drone>())
+		{
+			controlledObject.GetComponent<NPC_Drone>().SetIsControlled(true);
+		}
 	}
 
 	public void ReleaseControlOfObject(){
-		if(controlledObject != null){
-			controlledObject.GetComponent<DetectionBehavior> ().SetIsControlled (false);
+		if(controlledObject != null)
+		{
+			if (controlledObject.GetComponent<NPC_Camera>())
+			{
+				controlledObject.GetComponent<NPC_Camera>().SetIsControlled(false);
+			}
+			else if (controlledObject.GetComponent<NPC_Drone>())
+			{
+				controlledObject.GetComponent<NPC_Drone>().SetIsControlled(false);
+			}
 			controlledObject = null;
 		}
 	}
