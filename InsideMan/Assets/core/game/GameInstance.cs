@@ -67,6 +67,7 @@ public class GameInstance : MonoBehaviour {
 	}
 
 	public void ShowGameOver(bool wasVictory){
+		Debug.Log ("Win? " + wasVictory);
 		isGameOver = true;
 		thiefGameOver.SetActive(true);
 		hackerGameOver.SetActive(true);
@@ -77,14 +78,14 @@ public class GameInstance : MonoBehaviour {
 			totalSharedEarnings	= sharedEarnings + successEarnings;
 			totalThiefEarnings = thiefEarnings;
 			totalHackerEarnings = hackerEarnings;
-			hackerGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
-			thiefGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
 		}else{
 			lostReloadLevelTimer = Time.time + lostReloadLevelTimerDuration;
 			hasLost = true;
 		}
 		HackerCam.transform.position = ThiefCam.transform.position;
 		HackerCam.GetComponent<Camera>().orthographicSize = ThiefCam.GetComponent<Camera>().orthographicSize;
+		hackerGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
+		thiefGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
 	}
 
 	public void RestartGame(){
