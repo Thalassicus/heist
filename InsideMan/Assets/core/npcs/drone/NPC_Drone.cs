@@ -58,19 +58,23 @@ public class NPC_Drone : MonoBehaviour{
 	public void SetTargetPosition(Vector3 newTargetPosition)
 	{
 		targetPosition = newTargetPosition;
+		targetPosition.z = 0;
 		isMoving = true;
 	}
 
 	public void SetIsControlled(bool thisIsControlled){
 		isControlled = thisIsControlled;
-		SetTargetPosition(transform.position);
+		//SetTargetPosition(transform.position);
+		isMoving = true;
 		if (isControlled)
 		{
+			gameObject.tag = "Camera_Controlled";
 			detectionBehavior.rangeRenderer.startColor = Color.blue;
 			detectionBehavior.rangeRenderer.endColor = Color.blue;
 		}
 		else
 		{
+			gameObject.tag = "Camera";
 			detectionBehavior.rangeRenderer.startColor = Color.red;
 			detectionBehavior.rangeRenderer.endColor = Color.red;
 		}
