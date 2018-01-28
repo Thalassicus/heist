@@ -52,14 +52,6 @@ public class PlayerController_Thief : MonoBehaviour {
 		//rigidbody2D.MovePosition(rigidbody2D.position + moveVector);
 	}
 
-	public void LootIt(bool wasShared, int value)
-	{
-		if (true)
-		{
-
-		}
-	}
-
 	void OnTriggerEnter2D(Collider2D collider){
 		if( collider.tag == "Objective" ){
 			hasObjective = true;
