@@ -10,7 +10,7 @@ public class NPC_Drone : MonoBehaviour{
 
 	Vector3 targetPosition;
 	bool isMoving = true;
-	float moveRate = 5f;
+	float moveRate = 2.5f;
 	float positionTolerance = 0.1f;
 
 	public Vector2 range = new Vector2(25f,30f);

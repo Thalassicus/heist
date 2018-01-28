@@ -67,6 +67,8 @@ public class GameInstance : MonoBehaviour {
 	}
 
 	public void ShowGameOver(bool wasVictory){
+		if (isGameOver)
+			return;
 		Debug.Log ("Win? " + wasVictory);
 		isGameOver = true;
 		thiefGameOver.SetActive(true);
