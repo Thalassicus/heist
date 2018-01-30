@@ -64,4 +64,10 @@ public class Loot : MonoBehaviour{
 			markerObject.SetActive(true);
 		}
 	}
+
+	public void SetSortingOrder(int newSortingOrder) {
+		outlineObject.GetComponent<SpriteRenderer>().sortingOrder = newSortingOrder;
+		coinObject.GetComponent<SpriteRenderer>().sortingOrder = newSortingOrder;
+		markerObject.GetComponent<SpriteRenderer>().sortingOrder = newSortingOrder;
+	}
 }

@@ -7,7 +7,7 @@ public class NPC_Drone : ControllableObject {
 	
 	float moveRate = 2.5f;
 
-	public Vector2 range = new Vector2(25f,30f);
+	public Vector2 range = new Vector2(23f,30f);
 	
 	// Use this for initialization
 	void Start () {

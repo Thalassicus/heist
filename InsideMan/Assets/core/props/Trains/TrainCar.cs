@@ -23,9 +23,9 @@ public class TrainCar : MonoBehaviour{
     void Start() {
 		gameInstance = FindObjectOfType<GameInstance>();
 
-		spriteR = traincarCover.gameObject.GetComponent<SpriteRenderer>();
-		spriteR.sortingOrder = gameObject.GetComponent<SpriteRenderer>().sortingOrder;
-		spriteR.color = gameObject.GetComponent<SpriteRenderer>().color;
+		spriteR = gameObject.GetComponent<SpriteRenderer>();
+		//traincarCover.GetComponent<SpriteRenderer>().sortingOrder = gameObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+		traincarCover.GetComponent<SpriteRenderer>().color = gameObject.GetComponent<SpriteRenderer>().color;
 		thisCollider = gameObject.GetComponent<BoxCollider2D>();
 		sprites = Resources.LoadAll<Sprite>(spriteName);
 
@@ -34,9 +34,9 @@ public class TrainCar : MonoBehaviour{
         }
 
         if (isBoxcar) {
-            spriteR.sprite = sprites[0];
+            spriteR.sprite = sprites[2];
             thisCollider.isTrigger = true;
-			spriteR.gameObject.layer = LayerMask.NameToLayer("TrainCarRoof");
+			//spriteR.gameObject.layer = LayerMask.NameToLayer("TrainCarRoof");
 			for (int i = 0; i < possibleLootLocations.Length; i++)
 			{
 				if (Random.Range(0f,1f) < gameInstance.lootChance)
@@ -44,14 +44,16 @@ public class TrainCar : MonoBehaviour{
 					CreateLoot(possibleLootLocations[i]);
 				}
 			}
-			gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+			//gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+			traincarCover.SetActive(true);
 
 		} else {
             isBoxcar = false;
             spriteR.sprite = sprites[1];
             thisCollider.isTrigger = false;
-			spriteR.gameObject.layer = LayerMask.NameToLayer("TrainCar");
-			gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			//spriteR.gameObject.layer = LayerMask.NameToLayer("TrainCar");
+			//spriteR.GetComponent<SpriteRenderer> ().enabled = false;
+			traincarCover.SetActive(false);
 		}
 
         spriteR.flipX = Random.Range (0f, 1f) > 0.5;
@@ -71,6 +73,7 @@ public class TrainCar : MonoBehaviour{
 		var pref = Instantiate(lootPrefab, transform.position, Quaternion.identity);
 		pref.transform.SetParent(transform);
 		pref.transform.localPosition = location;
+		pref.GetComponent<Loot>().SetSortingOrder(gameObject.GetComponent<SpriteRenderer>().sortingOrder + 1);
 	}
 
 	public void SetRoofVisibility(bool isRoofVisible) {

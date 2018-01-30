@@ -54,7 +54,7 @@ TagManager:
   - name: Zone
     uniqueID: 2303029813
     locked: 0
-  - name: TrainInterior
+  - name: World
     uniqueID: 2932167151
     locked: 0
   - name: Objective
@@ -63,14 +63,14 @@ TagManager:
   - name: Loot
     uniqueID: 993193293
     locked: 0
-  - name: Train
+  - name: Thief
+    uniqueID: 2643540947
+    locked: 0
+  - name: TrainRoof
     uniqueID: 2499793009
     locked: 0
   - name: Cameras
     uniqueID: 4234723447
-    locked: 0
-  - name: Thief
-    uniqueID: 2643540947
     locked: 0
   - name: UI
     uniqueID: 2636664405
