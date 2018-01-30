@@ -4,14 +4,12 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class DetectionBehavior: MonoBehaviour {
-
-	GameInstance gameInstance;
+	
     public bool isRandom = true;
 
 	public GameObject alertIcon;
 	Vector3 alertIconLocalScale;
 	float loseTimerEnd = 0f;
-	float loseTimerDuration = 0.7f;
 	bool isLosing = false;
 
 	public bool canMarkLoot = false;
@@ -21,11 +19,11 @@ public class DetectionBehavior: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameInstance = FindObjectOfType<GameInstance> ();
+		rangeRenderer.transform.position = Utilities2D.CleanVector3(rangeRenderer.transform.position, 0f);
 		cameraNumberText.GetComponent<MeshRenderer>().sortingLayerID = SortingLayer.NameToID("UI");
 		Random.InitState(gameObject.GetInstanceID());
         if (isRandom) {
-            gameObject.SetActive(Random.Range(0f, 1f) < gameInstance.cameraChance);
+            gameObject.SetActive(Random.Range(0f, 1f) < Game.instance.cameraChance);
         }
 		alertIconLocalScale = alertIcon.transform.localScale;
 	}
@@ -34,7 +32,7 @@ public class DetectionBehavior: MonoBehaviour {
 	void Update(){
 		cameraNumberText.transform.rotation = Quaternion.Euler(0,0,0);
 		if (isLosing){
-			var percent = 1-((loseTimerEnd - Time.time) / gameInstance.detectionTime);
+			var percent = 1-((loseTimerEnd - Time.time) / Game.instance.detectionTime);
 			if (percent < 0.5f)
 			{
 				alertIcon.transform.localScale = alertIconLocalScale * 1f;
@@ -48,7 +46,7 @@ public class DetectionBehavior: MonoBehaviour {
 				alertIcon.GetComponent<SpriteRenderer>().color = Color.red;
 			}
 			if (loseTimerEnd < Time.time){
-				gameInstance.ShowGameOver(false);
+				Game.instance.ShowGameOver(false);
 			}
 		}
 	}
@@ -77,8 +75,8 @@ public class DetectionBehavior: MonoBehaviour {
 
 	public void DoTriggerEnter2D(Collider2D collider){
 		if(collider.gameObject.tag == "Thief"){
-			(gameInstance.HackerCam.GetComponent<Camera>()).cullingMask |= 1 << LayerMask.NameToLayer("Thief");
-			loseTimerEnd = Time.time + gameInstance.detectionTime;
+			Game.instance.hackerCam.cullingMask |= 1 << LayerMask.NameToLayer("Thief");
+			loseTimerEnd = Time.time + Game.instance.detectionTime;
 			isLosing = true;
 			alertIcon.SetActive(true);
 		}
@@ -89,7 +87,7 @@ public class DetectionBehavior: MonoBehaviour {
 
 	public void DoTriggerExit2D(Collider2D collider){
 		if(collider.gameObject.tag == "Thief"){
-			(gameInstance.HackerCam.GetComponent<Camera>()).cullingMask &= ~(1 << LayerMask.NameToLayer("Thief"));
+			Game.instance.hackerCam.cullingMask &= ~(1 << LayerMask.NameToLayer("Thief"));
 			isLosing = false;
 			alertIcon.SetActive(false);
 			alertIcon.GetComponent<SpriteRenderer>().color = Color.yellow;

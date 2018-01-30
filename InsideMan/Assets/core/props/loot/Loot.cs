@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Loot : MonoBehaviour{
-	GameInstance gameInstance;
-
 	bool isMarked = false;
 	int value = 0;
 	int baseValue = 5000;
 	float highValueMultiplier = 3f;
 	public bool isHighValue = false;
-	Vector3 originalScale;
+	//Vector3 originalScale;
 
 	bool markedForDeletion = false;
 
@@ -19,10 +17,9 @@ public class Loot : MonoBehaviour{
 	public GameObject markerObject;
 
 	void Start(){
-		gameInstance = FindObjectOfType<GameInstance>();
-		originalScale = transform.localScale;
+		//originalScale = transform.localScale;
 		Random.InitState(gameObject.GetInstanceID());
-		if (Random.Range(0f, 1f) < gameInstance.lootChance)
+		if (Random.Range(0f, 1f) < Game.instance.lootChance)
 		{
 			//gameObject.SetActive(true);
 		}
@@ -30,7 +27,7 @@ public class Loot : MonoBehaviour{
 		{
 			//gameObject.SetActive(false);
 		}
-		SetLootValue(Random.Range(0f, 1f) < gameInstance.highValueLootChance);
+		SetLootValue(Random.Range(0f, 1f) < Game.instance.highValueLootChance);
 	}
 
 	public void SetLootValue(bool isThisHighValue)
@@ -51,18 +48,18 @@ public class Loot : MonoBehaviour{
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (!gameInstance) { return; }
+		if (!Game.instance) { return; }
 		if (markedForDeletion) return;
 		if (other.gameObject.tag == "Thief")
 		{
 			Debug.Log("Cha-ching!");
-			gameInstance.AddThiefEarnings(isMarked,value);
+			Game.instance.AddThiefEarnings(isMarked,value);
 			markedForDeletion = true;
 			Destroy(gameObject);
 		}
 		if (other.gameObject.tag == "Camera_Controlled")
 		{
-			gameInstance.AddHackerEarnings(value);
+			Game.instance.AddHackerEarnings(value);
 			isMarked = true;
 			markerObject.SetActive(true);
 		}

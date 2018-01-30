@@ -2,54 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC_Drone : MonoBehaviour{
-	GameInstance gameInstance;
+public class NPC_Drone : ControllableObject {
 	public DetectionBehavior detectionBehavior;
-
-	public bool isControlled = false;
-
-	Vector3 targetPosition;
-	bool isMoving = true;
+	
 	float moveRate = 2.5f;
-	float positionTolerance = 0.1f;
 
 	public Vector2 range = new Vector2(25f,30f);
-
+	
 	// Use this for initialization
 	void Start () {
-		gameInstance = FindObjectOfType<GameInstance>();
-		targetPosition = transform.position;
+		SetObjectLayer(-2f);
+		SetTargetPosition(true);
 	}
 	
 	// Update is called once per frame
 	void Update (){
-		if (gameInstance.isGameOver)
+		if (Game.instance.isGameOver)
 			return;
-		if (Input.GetMouseButton(0)){
+		if (Input.GetMouseButton(1)){
 			if (isControlled) {
-				SetTargetPosition (getPosition (Input.mousePosition));
+				SetTargetPosition(Game.instance.hackerCam.GetComponent<Camera>(), Input.mousePosition);
 			}
 		}
+		/*
 		if( Input.GetMouseButtonDown(0)){
-			var dronePosition = gameInstance.HackerCam.GetComponent<Camera> ().WorldToScreenPoint (transform.position);
+			var dronePosition = Game.instance.hackerCam.GetComponent<Camera> ().WorldToScreenPoint (transform.position);
 			if((dronePosition - Input.mousePosition).magnitude < 2f){
-				gameInstance.hacker.GetComponent<PlayerController_Hacker>().TakeControlOfObject(gameObject);
+				Game.instance.hacker.GetComponent<PlayerController_Hacker>().TakeControlOfObject(gameObject);
 			}
 		}
-		if (isMoving)
-		{
-			var targetMoveDistance = (targetPosition - transform.position).normalized * Time.deltaTime * moveRate;
-			var remainingMoveDistance = (targetPosition - transform.position);
-			if (remainingMoveDistance.magnitude - targetMoveDistance.magnitude < positionTolerance)
-			{
-				transform.Translate(remainingMoveDistance);
-				isMoving = false;
-				if (!isControlled)
-				{
+		//*/
+		if (hasNewTargetPosition){
+			if ( IsAtTargetPosition(Time.deltaTime * moveRate) ) {
+				transform.Translate((targetPosition - transform.position));
+				hasNewTargetPosition = false;
+				if (!isControlled){
 					pickNewPosition();
 				}
 			}
-			transform.Translate(targetMoveDistance);
+			transform.Translate(Utilities2D.GetDirection3D(transform.position, targetPosition) * Time.deltaTime * moveRate);
 		}
 	}
 
@@ -57,23 +48,11 @@ public class NPC_Drone : MonoBehaviour{
 	{
 		SetTargetPosition(new Vector3(Random.Range(-1f, 1f) * range.x, Random.Range(-1f, 1f) * range.y, 0));
 	}
-
-	public Vector3 getPosition(Vector2 lookAtTarget){
-		var targetPos = gameInstance.HackerCam.GetComponent<Camera>().ScreenToWorldPoint(lookAtTarget);
-		return targetPos;
-	}
-
-	public void SetTargetPosition(Vector3 newTargetPosition)
-	{
-		targetPosition = newTargetPosition;
-		targetPosition.z = 0;
-		isMoving = true;
-	}
-
-	public void SetIsControlled(bool thisIsControlled){
-		isControlled = thisIsControlled;
+	
+	public override void SetIsControlled(bool newIsControlled){
+		base.SetIsControlled(newIsControlled);
 		//SetTargetPosition(transform.position);
-		isMoving = true;
+		hasNewTargetPosition = true;
 		if (isControlled)
 		{
 			gameObject.tag = "Camera_Controlled";
@@ -91,6 +70,6 @@ public class NPC_Drone : MonoBehaviour{
 
 	void OnMouseDown()
 	{
-		gameInstance.hacker.GetComponent<PlayerController_Hacker>().TakeControlOfObject(gameObject);
+		Game.instance.hacker.GetComponent<PlayerController_Hacker>().TakeControlOfObject(gameObject);
 	}
 }

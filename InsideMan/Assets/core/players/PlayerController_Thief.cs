@@ -4,8 +4,6 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController_Thief : MonoBehaviour {
-	GameInstance gameInstance;
-
 	public float moveSpeed = 1f;
 	public float sprintSpeed = 2f;
 	public float carryMultiplier = 0.8f;
@@ -20,7 +18,6 @@ public class PlayerController_Thief : MonoBehaviour {
 	//public Text debugText;
 
 	void Start(){
-		gameInstance = FindObjectOfType<GameInstance> ();
 		rigidbody2D = ((Rigidbody2D)GetComponent(typeof(Rigidbody2D)));
 		moveSpeedActual = moveSpeed;
 		sprintSpeedActual = sprintSpeed;
@@ -28,7 +25,7 @@ public class PlayerController_Thief : MonoBehaviour {
 
 	void Update () {
 		rigidbody2D.velocity = Vector2.zero;
-		if (gameInstance.isGameOver)
+		if (Game.instance.isGameOver)
 			return;
 		
 		var speed = moveSpeedActual;
@@ -62,7 +59,7 @@ public class PlayerController_Thief : MonoBehaviour {
 		if(collider.tag == "Exit" && hasObjective){
 			// End Game
 			Debug.Log("WOOOOOO!!!!");
-			gameInstance.ShowGameOver (true);
+			Game.instance.ShowGameOver (true);
 		}
 	}
 }

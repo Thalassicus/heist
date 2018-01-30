@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public static class Game {
+	public static GameInstance instance;
+}
+
 public class GameInstance : MonoBehaviour {
-	public GameObject ThiefCam;
-	public GameObject HackerCam;
+	public Camera thiefCam;
+	public Camera hackerCam;
 	public GameObject thief;
 	public GameObject hacker;
 	public GameObject thiefGameOver;
 	public GameObject hackerGameOver;
+	public GameObject audioSourcePrefab;
+	GameObject audioSource;
 	
 	public int successEarnings = 50000;
 	public int sharedEarnings = 0;
@@ -28,12 +34,24 @@ public class GameInstance : MonoBehaviour {
 	public float lootChance = 0.75f;
 	public float highValueLootChance = 0.25f;
 
+	private void Awake() {
+		Game.instance = this;
+	}
+
 	private void Start(){
 		var cameras = FindObjectsOfType<DetectionBehavior>();
 		for (int i = 0; i < cameras.Length; i++) {
 			if (cameras[i].isActiveAndEnabled){
 				cameras[i].SetCameraNumber(i + 1);
 			}
+		}
+		AudioSource source = FindObjectOfType<AudioSource>();
+		if (source != null) {
+			audioSource = source.gameObject;
+			DontDestroyOnLoad(audioSource);
+		} else {
+			audioSource = Instantiate<GameObject>(audioSourcePrefab);
+			DontDestroyOnLoad(audioSource);
 		}
 	}
 
@@ -84,8 +102,8 @@ public class GameInstance : MonoBehaviour {
 			lostReloadLevelTimer = Time.time + lostReloadLevelTimerDuration;
 			hasLost = true;
 		}
-		HackerCam.transform.position = ThiefCam.transform.position;
-		HackerCam.GetComponent<Camera>().orthographicSize = ThiefCam.GetComponent<Camera>().orthographicSize;
+		hackerCam.transform.position = thiefCam.transform.position;
+		hackerCam.GetComponent<Camera>().orthographicSize = thiefCam.orthographicSize;
 		hackerGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
 		thiefGameOver.GetComponent<GameOver>().UpdateText(wasVictory, totalSharedEarnings, totalThiefEarnings, totalHackerEarnings);
 	}
