@@ -20,7 +20,7 @@ public class NPC_Camera : ControllableObject {
 		SetObjectLayer(-1f);
 		startRotation = transform.rotation;
 		SetRotationFromSweep();
-		Random.InitState( gameObject.GetInstanceID() );
+		//Random.InitState( gameObject.GetInstanceID() );
 		isLeft = Random.Range(0f, 1f) < 0.5f;
 		SetCameraSweepTime(cameraSweepTime * Random.Range(0f, 1f));
 		if( isRandom ) {

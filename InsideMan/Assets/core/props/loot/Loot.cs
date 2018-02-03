@@ -18,7 +18,7 @@ public class Loot : MonoBehaviour{
 
 	void Start(){
 		//originalScale = transform.localScale;
-		Random.InitState(gameObject.GetInstanceID());
+		//Random.InitState(gameObject.GetInstanceID());
 		if (Random.Range(0f, 1f) < Game.instance.lootChance)
 		{
 			//gameObject.SetActive(true);
