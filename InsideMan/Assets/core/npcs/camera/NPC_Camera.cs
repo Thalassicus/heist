@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class NPC_Camera : ControllableObject {
 	public DetectionBehavior detectionBehavior;
-	
+
+	public bool isRandom = true;
+
 	float angleTolerance = 0.1f;
 	float rotationRate = 0.75f;
 
@@ -18,8 +20,12 @@ public class NPC_Camera : ControllableObject {
 		SetObjectLayer(-1f);
 		startRotation = transform.rotation;
 		SetRotationFromSweep();
+		Random.InitState( gameObject.GetInstanceID() );
 		isLeft = Random.Range(0f, 1f) < 0.5f;
 		SetCameraSweepTime(cameraSweepTime * Random.Range(0f, 1f));
+		if( isRandom ) {
+			gameObject.SetActive( Random.Range( 0f, 1f ) < Game.instance.cameraChance );
+		}
 	}
 	
 	// Update is called once per frame

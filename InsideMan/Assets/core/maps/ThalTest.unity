@@ -743,6 +743,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
   m_IsPrefabParent: 0
@@ -2087,6 +2092,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
   m_IsPrefabParent: 0
@@ -2979,6 +2989,11 @@ Prefab:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114138454577383780, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
         type: 2}
       propertyPath: isRandom
       value: 0
@@ -3934,6 +3949,11 @@ Prefab:
         type: 2}
       propertyPath: isRandom
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
@@ -5020,6 +5040,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
   m_IsPrefabParent: 0
@@ -5208,6 +5233,11 @@ Prefab:
         type: 2}
       propertyPath: m_SortingOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
@@ -5676,6 +5706,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
   m_IsPrefabParent: 0
@@ -5737,37 +5772,10 @@ Prefab:
       propertyPath: m_Name
       value: NPCcam (81)
       objectReference: {fileID: 0}
-    - target: {fileID: 4088287577219072, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4088287577219072, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 8.000013
-      objectReference: {fileID: 0}
-    - target: {fileID: 4088287577219072, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 8.000013
-      objectReference: {fileID: 0}
-    - target: {fileID: 212662891797276590, guid: 9b17f4a240c531d44bbba0fe39612e55,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114138454577383780, guid: 9b17f4a240c531d44bbba0fe39612e55,
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
         type: 2}
       propertyPath: isRandom
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
-        type: 2}
-      propertyPath: cameraSweepAngle
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
-        type: 2}
-      propertyPath: cameraSweepTime
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
@@ -7967,6 +7975,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
   m_IsPrefabParent: 0
@@ -8371,6 +8384,11 @@ Prefab:
         type: 2}
       propertyPath: m_SortingOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
@@ -8778,6 +8796,11 @@ Prefab:
         type: 2}
       propertyPath: m_SortingOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
@@ -9541,6 +9564,11 @@ Prefab:
       propertyPath: isRandom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}
   m_IsPrefabParent: 0
@@ -9785,6 +9813,11 @@ Prefab:
         type: 2}
       propertyPath: isRandom
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913002853900028, guid: 9b17f4a240c531d44bbba0fe39612e55,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b17f4a240c531d44bbba0fe39612e55, type: 2}

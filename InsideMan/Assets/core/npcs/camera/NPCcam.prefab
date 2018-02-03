@@ -87,16 +87,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320408953029386}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -6, y: 15, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22, y: -0.5, z: 0}
+  m_LocalScale: {x: 8.000013, y: 8.000013, z: 10}
   m_Children:
   - {fileID: 4107694554926778}
   - {fileID: 4803831977996146}
   - {fileID: 4520847339919542}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4107694554926778
 Transform:
   m_ObjectHideFlags: 1
@@ -247,7 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02426f8084667a4283458911fff0dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRandom: 1
   alertIcon: {fileID: 1993757263852948}
   canMarkLoot: 0
   cameraNumberText: {fileID: 1178318600640186}
@@ -276,8 +275,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionBehavior: {fileID: 114138454577383780}
-  cameraSweepAngle: 45
-  cameraSweepTime: 8
+  isRandom: 1
+  cameraSweepAngle: 25
+  cameraSweepTime: 4
 --- !u!120 &120121673985565440
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -310,7 +310,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -60243849
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.1, y: 0.1, z: 0}
@@ -446,7 +446,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -60243849
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 3fcc4d4c17d4c494087140d77ff1658d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

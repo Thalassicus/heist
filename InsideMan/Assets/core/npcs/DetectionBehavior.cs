@@ -4,8 +4,6 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class DetectionBehavior: MonoBehaviour {
-	
-    public bool isRandom = true;
 
 	public GameObject alertIcon;
 	Vector3 alertIconLocalScale;
@@ -21,10 +19,6 @@ public class DetectionBehavior: MonoBehaviour {
 	void Start () {
 		rangeRenderer.transform.position = Utilities2D.CleanVector3(rangeRenderer.transform.position, 0f);
 		cameraNumberText.GetComponent<MeshRenderer>().sortingLayerID = SortingLayer.NameToID("UI");
-		Random.InitState(gameObject.GetInstanceID());
-        if (isRandom) {
-            gameObject.SetActive(Random.Range(0f, 1f) < Game.instance.cameraChance);
-        }
 		alertIconLocalScale = alertIcon.transform.localScale;
 	}
 
