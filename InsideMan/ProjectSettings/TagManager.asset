@@ -11,6 +11,7 @@ TagManager:
   - Train
   - Drone
   - Camera_Controlled
+  - Patrol_Point
   layers:
   - Default
   - TransparentFX
